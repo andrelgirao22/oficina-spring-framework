@@ -23,6 +23,14 @@ public class VinhosController {
 	@Autowired
 	private VinhosRepository repository;
 	
+	
+	@GetMapping()
+	public ModelAndView listar() {
+		ModelAndView modelAndView = new ModelAndView("vinhos/lista-vinhos");
+		modelAndView.addObject("vinhos", this.repository.findAll());
+		return modelAndView;
+	}
+	
 	@GetMapping("/novo")
 	public ModelAndView novo(Vinho vinho) {
 		ModelAndView modelAndView = new ModelAndView("vinhos/cadastro-vinho");
